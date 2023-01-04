@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1204815882, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
+      propertyPath: isGlobal
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1625905418, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
       propertyPath: CameraInterpolationStrength
       value: 0
@@ -144,11 +148,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8062193883131752047, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 757
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8062193883131752047, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 85
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 8062193883131752047, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
       propertyPath: m_LocalPosition.z
@@ -245,10 +249,10 @@ MonoBehaviour:
   _terrainScale: 128
   _grassSettings:
     generate: 1
-    threshold: 0.5
+    threshold: 45
   _treeSettings:
-    generate: 0
-    threshold: 1
+    generate: 1
+    threshold: 30
   _pathSettings:
     generate: 1
     threshold: 0
@@ -262,14 +266,14 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: b7921802e621c2b4a8efa95d10989b36, type: 2}
-  m_TreeDistance: 192
+  m_TreeDistance: 128
   m_TreeBillboardDistance: 2000
   m_TreeCrossFadeLength: 200
   m_TreeMaximumFullLODCount: 10000
-  m_DetailObjectDistance: 192
+  m_DetailObjectDistance: 64
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
-  m_SplatMapDistance: 192
+  m_SplatMapDistance: 64
   m_HeightmapMaximumLOD: 0
   m_ShadowCastingMode: 2
   m_DrawHeightmap: 1
@@ -333,12 +337,12 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
-    m_Resolution: -1
+    m_Resolution: 0
     m_CustomResolution: -1
     m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_Bias: 0.1
+    m_NormalBias: 0.1
+    m_NearPlane: 0.1
     m_CullingMatrixOverride:
       e00: 1
       e01: 0

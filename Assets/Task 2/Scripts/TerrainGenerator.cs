@@ -43,9 +43,6 @@ public class TerrainGenerator : MonoBehaviour
 
 		if (_pathSettings.generate)
 			CreateProceduralPath(_terrain.terrainData, _pathSettings.threshold);
-
-		if (_treeSettings.generate)
-			CreateProceduralTrees(_terrain.terrainData, _pathSettings.threshold);
 	}
 
 	private void CreateProceduralTerrain(TerrainData terrainData, byte seed)
@@ -58,20 +55,23 @@ public class TerrainGenerator : MonoBehaviour
 			{
 				heightmap[x, y] = GenerateHeightmap(x, y, terrainData, seed);
 
-				TreeInstance newTree = new TreeInstance();
+				if (_treeSettings.generate)
+				{
+					TreeInstance newTree = new TreeInstance();
 
-				float normalizedX = x * 1.0f / (terrainData.heightmapResolution - 1);
-				float normalizedY = y * 1.0f / (terrainData.heightmapResolution - 1);
+					float normalizedX = x * 1.0f / (terrainData.heightmapResolution - 1);
+					float normalizedY = y * 1.0f / (terrainData.heightmapResolution - 1);
 
-				newTree.position = new Vector3(normalizedX, 0, normalizedY);
-				newTree.color = Color.white;
-				newTree.heightScale = 1;
-				newTree.widthScale = 1;
-				newTree.rotation = Random.Range(0, 360);
+					newTree.position = new Vector3(normalizedX, -1, normalizedY);
+					newTree.color = Color.white;
+					newTree.heightScale = 1;
+					newTree.widthScale = 1;
+					newTree.rotation = Random.Range(0, 360);
 
-				float angle = terrainData.GetSteepness(normalizedX, normalizedY);
-					if (angle < 15)
-						trees.Add(newTree);
+					float angle = terrainData.GetSteepness(normalizedX, normalizedY);
+						if (angle < _treeSettings.threshold)
+							trees.Add(newTree);
+				}
 			}
 				
 
@@ -79,11 +79,6 @@ public class TerrainGenerator : MonoBehaviour
 		terrainData.SetHeights(0, 0, heightmap);
 
 		terrainData.SetTreeInstances(trees.ToArray(), true);
-	}
-
-	private void CreateProceduralTrees(TerrainData terrainData, float threshold)
-	{
-
 	}
 
 	private void CreateProceduralPath(TerrainData terrainData, float threshold)
@@ -119,7 +114,7 @@ public class TerrainGenerator : MonoBehaviour
 
 				float angle = terrainData.GetSteepness(normalizedX, normalizedY);
 
-				if (angle < 45)
+				if (angle < threshold)
 					detailmap[x, y] = 1;
 				else detailmap[x, y] = 0;
 			}
