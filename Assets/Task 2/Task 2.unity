@@ -252,7 +252,7 @@ MonoBehaviour:
     threshold: 45
   _treeSettings:
     generate: 1
-    threshold: 30
+    threshold: 15
   _pathSettings:
     generate: 1
     threshold: 0

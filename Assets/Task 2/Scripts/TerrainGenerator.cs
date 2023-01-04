@@ -43,40 +43,46 @@ public class TerrainGenerator : MonoBehaviour
 
 		if (_pathSettings.generate)
 			CreateProceduralPath(_terrain.terrainData, _pathSettings.threshold);
+
+		if (_treeSettings.generate)
+			CreateProceduralTrees(_terrain.terrainData, _treeSettings.threshold, 1);
 	}
 
 	private void CreateProceduralTerrain(TerrainData terrainData, byte seed)
 	{
-		List<TreeInstance> trees = new List<TreeInstance>();
 		float[,] heightmap = new float[terrainData.heightmapResolution, terrainData.heightmapResolution];
 
 		for (int x = 0; x < terrainData.heightmapResolution; x++)
 			for (int y = 0; y < terrainData.heightmapResolution; y++)
-			{
 				heightmap[x, y] = GenerateHeightmap(x, y, terrainData, seed);
-
-				if (_treeSettings.generate)
-				{
-					TreeInstance newTree = new TreeInstance();
-
-					float normalizedX = x * 1.0f / (terrainData.heightmapResolution - 1);
-					float normalizedY = y * 1.0f / (terrainData.heightmapResolution - 1);
-
-					newTree.position = new Vector3(normalizedX, -1, normalizedY);
-					newTree.color = Color.white;
-					newTree.heightScale = 1;
-					newTree.widthScale = 1;
-					newTree.rotation = Random.Range(0, 360);
-
-					float angle = terrainData.GetSteepness(normalizedX, normalizedY);
-						if (angle < _treeSettings.threshold)
-							trees.Add(newTree);
-				}
-			}
 				
 
 		//We Will Now Start To Procedurally Generate The Terrain Using Perlin Noise
 		terrainData.SetHeights(0, 0, heightmap);
+	}
+
+	private void CreateProceduralTrees(TerrainData terrainData, float threshold, byte spacing)
+	{
+		List<TreeInstance> trees = new List<TreeInstance>();
+
+		for (int x = 0; x < terrainData.heightmapResolution; x += spacing)
+			for (int y = 0; y < terrainData.heightmapResolution; y += spacing)
+			{
+				TreeInstance newTree = new TreeInstance();
+
+				float normalizedX = x * 1.0f / (terrainData.heightmapResolution - 1);
+				float normalizedY = y * 1.0f / (terrainData.heightmapResolution - 1);
+
+				newTree.position = new Vector3(normalizedX, -1, normalizedY);
+				newTree.color = Color.white;
+				newTree.heightScale = 1;
+				newTree.widthScale = 1;
+				newTree.rotation = Random.Range(0, 360);
+
+				float angle = terrainData.GetSteepness(normalizedX, normalizedY);
+					if (angle < _treeSettings.threshold)
+						trees.Add(newTree);
+			}
 
 		terrainData.SetTreeInstances(trees.ToArray(), true);
 	}
