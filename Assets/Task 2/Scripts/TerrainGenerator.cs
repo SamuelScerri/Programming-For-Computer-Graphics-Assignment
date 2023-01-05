@@ -69,11 +69,20 @@ public class TerrainGenerator : MonoBehaviour
 	private int _customDetailDistance;
 
 	private Terrain _terrain;
+	private TerrainCollider _terrainCollider;
 
 	private void Start()
 	{
 		//The Terrain Will Be Generated Using A Procedurally Generated Terrain Data Object
 		_terrain = GetComponent<Terrain>();
+		_terrainCollider = GetComponent<TerrainCollider>();
+
+		/*
+			There Is An Issue Where Tree Colliders Aren't Being Positioned Properly After Generating The Terrain,
+			A Similar Issue Was Resolved Here: https://answers.unity.com/questions/287361/tree-colliders-not-working.html
+			This Method Seemed To Work Perfectly So Far
+		*/
+		_terrainCollider.enabled = false;
 
 		if (_enableCustomDetailDistance)
 			_terrain.detailObjectDistance = _customDetailDistance;
@@ -92,6 +101,9 @@ public class TerrainGenerator : MonoBehaviour
 		//Trees Are Then Added Using A Similar Process To Grass, But With Larger Spacing Between Them
 		if (_treeSettings.generate)
 			CreateProceduralTrees(_terrain.terrainData, _treeSettings.threshold, _treeSpacing);
+
+		//We Will Now Enable The Terrain Collider, So That Tree Colliders Will Be Calculated Properly
+		_terrainCollider.enabled = true;
 
 		Instantiate(_waterPrefab, new Vector3(_terrain.terrainData.size.x / 2, _waterHeight, _terrain.terrainData.size.z / 2), Quaternion.Euler(90, 0, 0));
 		Instantiate(_playerPrefab, new Vector3(Random.Range(0, _terrain.terrainData.size.x), 128, Random.Range(0, _terrain.terrainData.size.z)), Quaternion.identity);
