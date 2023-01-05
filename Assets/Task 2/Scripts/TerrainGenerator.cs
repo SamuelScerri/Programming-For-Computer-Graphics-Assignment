@@ -47,6 +47,9 @@ public class TerrainGenerator : MonoBehaviour
 	private GameObject _waterPrefab;
 
 	[SerializeField]
+	private GameObject _playerPrefab;
+
+	[SerializeField]
 	private byte _waterHeight;
 
 	[SerializeField]
@@ -58,12 +61,22 @@ public class TerrainGenerator : MonoBehaviour
 	[SerializeField]
 	private byte _treeSpacing;
 
+	///This Option Is Very Resource Intensive If The Value Is Very Hight
+	[SerializeField]
+	private bool _enableCustomDetailDistance;
+
+	[SerializeField]
+	private int _customDetailDistance;
+
 	private Terrain _terrain;
 
 	private void Start()
 	{
 		//The Terrain Will Be Generated Using A Procedurally Generated Terrain Data Object
 		_terrain = GetComponent<Terrain>();
+
+		if (_enableCustomDetailDistance)
+			_terrain.detailObjectDistance = _customDetailDistance;
 
 		//We Generate The Terrain With A Random Seed, This Seed Will Be Used So That The Terrain Generated Will Always Be Different In The Same Position
 		CreateProceduralTerrain(_terrain.terrainData, (byte) Random.Range(0, 255));
@@ -81,6 +94,7 @@ public class TerrainGenerator : MonoBehaviour
 			CreateProceduralTrees(_terrain.terrainData, _treeSettings.threshold, _treeSpacing);
 
 		Instantiate(_waterPrefab, new Vector3(_terrain.terrainData.size.x / 2, _waterHeight, _terrain.terrainData.size.z / 2), Quaternion.Euler(90, 0, 0));
+		Instantiate(_playerPrefab, new Vector3(Random.Range(0, _terrain.terrainData.size.x), 128, Random.Range(0, _terrain.terrainData.size.z)), Quaternion.identity);
 	}
 
 	private void CreateProceduralTerrain(TerrainData terrainData, byte seed)

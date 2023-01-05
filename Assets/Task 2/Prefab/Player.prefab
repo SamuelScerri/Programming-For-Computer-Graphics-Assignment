@@ -74,7 +74,7 @@ MonoBehaviour:
   CameraInterpolation: 1
   IsCrouched: 0
   Acceleration: 0.2
-  CameraInterpolationStrength: 0.1
+  CameraInterpolationStrength: 0
   StandHeight: 4
   CrouchHeight: 2
   Mask:
@@ -137,8 +137,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
-  far clip plane: 512
+  near clip plane: 0.1
+  far clip plane: 1024
   field of view: 120
   orthographic: 0
   orthographic size: 5

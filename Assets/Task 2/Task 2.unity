@@ -123,83 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &207043442
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1204815882, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
-      propertyPath: isGlobal
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1625905418, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
-      propertyPath: CameraInterpolationStrength
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062193883131752040, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062193883131752047, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062193883131752047, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062193883131752047, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 128
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062193883131752047, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 540
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062193883131752047, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062193883131752047, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062193883131752047, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062193883131752047, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062193883131752047, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062193883131752047, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062193883131752047, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062193883315120513, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
-      propertyPath: field of view
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062193883315120513, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
-      propertyPath: far clip plane
-      value: 1024
-      objectReference: {fileID: 0}
-    - target: {fileID: 8062193883315120513, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
-      propertyPath: near clip plane
-      value: 0.1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
 --- !u!1 &513991136
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,10 +180,13 @@ MonoBehaviour:
     generate: 1
     threshold: 0
   _waterPrefab: {fileID: 4297597043853331991, guid: 5bacdfb3992652641a017eb38dd14b21, type: 3}
+  _playerPrefab: {fileID: 8062193883131752040, guid: b15a5b2e35439424ebb30c710ea54108, type: 3}
   _waterHeight: 32
   _mountainHeight: 96
   _beachSize: 8
   _treeSpacing: 4
+  _enableCustomDetailDistance: 1
+  _customDetailDistance: 512
 --- !u!218 &513991142
 Terrain:
   m_ObjectHideFlags: 0
@@ -278,7 +204,7 @@ Terrain:
   m_DetailObjectDistance: 250
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
-  m_SplatMapDistance: 64
+  m_SplatMapDistance: 20000
   m_HeightmapMaximumLOD: 0
   m_ShadowCastingMode: 2
   m_DrawHeightmap: 1
