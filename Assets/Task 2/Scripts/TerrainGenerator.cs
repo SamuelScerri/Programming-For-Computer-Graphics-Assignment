@@ -50,6 +50,9 @@ public class TerrainGenerator : MonoBehaviour
 	private byte _waterHeight;
 
 	[SerializeField]
+	private byte _mountainHeight;
+
+	[SerializeField]
 	private byte _beachSize;
 
 	[SerializeField]
@@ -124,7 +127,7 @@ public class TerrainGenerator : MonoBehaviour
 				newTree.rotation = Random.Range(0, 360);
 
 				//Trees Will Only Generate If The Angle Of The Terrain That They Are Currently On Is Smaller Than The Threshold Inputted In The Editor
-				if (angle < _treeSettings.threshold && height > _waterHeight + _beachSize)
+				if (angle < _treeSettings.threshold && height > _waterHeight + _beachSize && height < _mountainHeight)
 					trees.Add(newTree);
 			}
 
@@ -188,7 +191,7 @@ public class TerrainGenerator : MonoBehaviour
 				float height = terrainData.GetHeight((int) (translatedCoordinate * y), (int) (translatedCoordinate * x));
 
 				//Essentially This Means That Grass Will Not Spawn On Sand, Only On Dirt Or Grass
-				if (height > _waterHeight + _beachSize)
+				if (height > _waterHeight + _beachSize && height < _mountainHeight)
 					detailmap[x, y] = 1;
 				else detailmap[x, y] = 0;
 			}
