@@ -218,7 +218,7 @@ public class TerrainGenerator : MonoBehaviour
 
 				//Essentially This Means That Grass Will Not Spawn On Sand, Only On Dirt Or Grass
 				if (height > _waterHeight + _beachSize && height < _mountainHeight)
-					detailmap[x, y] = 1;
+					detailmap[x, y] = terrainData.detailResolution;
 				else detailmap[x, y] = 0;
 			}
 
