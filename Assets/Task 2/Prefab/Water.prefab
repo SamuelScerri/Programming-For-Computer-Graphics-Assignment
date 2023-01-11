@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 4297597043853331994}
   - component: {fileID: 4297597043853331989}
   - component: {fileID: 4297597043853331992}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4297597043853331995
 Transform:
