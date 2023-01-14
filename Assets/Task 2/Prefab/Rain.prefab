@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 294861017606266114}
   - component: {fileID: 294861017606266115}
   - component: {fileID: 1873490819764587253}
-  m_Layer: 3
+  m_Layer: 4
   m_Name: Rain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
