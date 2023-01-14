@@ -8,8 +8,16 @@ public class SceneChanger : MonoBehaviour
 	[SerializeField]
 	private byte _sceneIndex;
 
+	[SerializeField]
+	private bool _endGame;
+
 	private void OnTriggerEnter(Collider collision)
 	{
-		SceneManager.LoadScene(_sceneIndex);
+		if (_endGame)
+		{
+			Application.Quit();
+			Debug.Log("Shut Down");
+		}
+		else SceneManager.LoadScene(_sceneIndex);
 	}
 }

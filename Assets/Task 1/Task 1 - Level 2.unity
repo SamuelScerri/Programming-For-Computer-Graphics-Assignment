@@ -7874,6 +7874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneIndex: 0
+  _endGame: 1
 --- !u!1 &879893109
 GameObject:
   m_ObjectHideFlags: 0
@@ -17520,6 +17521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneIndex: 0
+  _endGame: 0
 --- !u!1 &1849512028
 GameObject:
   m_ObjectHideFlags: 0
