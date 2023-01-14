@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 8062193883315120513}
   - component: {fileID: 3885067503284651963}
   - component: {fileID: 1339867972882029452}
+  - component: {fileID: 911892704536326562}
   m_Layer: 3
   m_Name: View Camera
   m_TagString: MainCamera
@@ -234,3 +235,11 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   priority: 0
+--- !u!81 &911892704536326562
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8062193883315120515}
+  m_Enabled: 1

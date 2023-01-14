@@ -50,6 +50,9 @@ public class TerrainGenerator : MonoBehaviour
 	private GameObject _playerPrefab;
 
 	[SerializeField]
+	private GameObject _rainPrefab;
+
+	[SerializeField]
 	private byte _waterHeight;
 
 	[SerializeField]
@@ -70,6 +73,9 @@ public class TerrainGenerator : MonoBehaviour
 
 	private Terrain _terrain;
 	private TerrainCollider _terrainCollider;
+
+	private GameObject _player;
+	private GameObject _rain;
 
 	private void Start()
 	{
@@ -106,7 +112,13 @@ public class TerrainGenerator : MonoBehaviour
 		_terrainCollider.enabled = true;
 
 		Instantiate(_waterPrefab, new Vector3(_terrain.terrainData.size.x / 2, _waterHeight, _terrain.terrainData.size.z / 2), Quaternion.Euler(90, 0, 0));
-		Instantiate(_playerPrefab, new Vector3(Random.Range(0, _terrain.terrainData.size.x), 128, Random.Range(0, _terrain.terrainData.size.z)), Quaternion.identity);
+		_player = Instantiate(_playerPrefab, new Vector3(Random.Range(0, _terrain.terrainData.size.x), 128, Random.Range(0, _terrain.terrainData.size.z)), Quaternion.identity) as GameObject;
+		_rain = Instantiate(_rainPrefab, new Vector3(Random.Range(0, _terrain.terrainData.size.x), 128, Random.Range(0, _terrain.terrainData.size.z)), Quaternion.identity) as GameObject;
+	}
+
+	private void Update()
+	{
+		_rain.transform.position = new Vector3(_player.transform.position.x, 128, _player.transform.position.z);
 	}
 
 	private void CreateProceduralTerrain(TerrainData terrainData, byte seed)
