@@ -139,8 +139,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 128
-  field of view: 120
+  far clip plane: 512
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 780703e9f6c3af34d8a9f46c25baf38f, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 115804b4f9b54a54888fd9624303cb62, type: 2}
   isGlobal: 1
   blendDistance: 0
   weight: 1
